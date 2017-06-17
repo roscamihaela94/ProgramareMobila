@@ -30,10 +30,32 @@ creazaJoc: function() {
  		this.context.drawImage(imagine, this.x, this.y);
  	}
  }
+
+ function creeazaObstacol(x, y, width, height, culoare, locatieObstacol) {
+ 	 var imagine = document.getElementById("facebook");
+
+	this.x = x;
+	this.y = y;
+	this.width = width;
+	this.height = height;
+	this.culoare = culoare;
+	this.locatieObstacol = locatieObstacol;
+
+	 this.update = function(){
+	 	this.context = joc.context;
+	 	this.context.fillStyle = this.culoare;
+	 	this.context.fillRect( this.x, this.y, this.width, this.height);
+	
+	 }	 
+ }
  var creazaJoc = function (){
  	joc.creazaJoc();
  	joc.updateBackround();
  	var pasare = new creeazaPasare( 10, 120, 30, 30, 0.05);
  	pasare.update();
+ 	var obstacol1 = new creeazaObstacol( 200, 0, 30, 80, "#1d3469", "sus");
+ 	var obstacol2 = new creeazaObstacol( 200, 200, 30, 70, "#1d3469", "jos");
+ 	obstacol1.update();
+ 	obstacol2.update();
  }
 
