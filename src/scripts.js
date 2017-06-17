@@ -17,9 +17,23 @@ creazaJoc: function() {
  		this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
   }
  }
+ function creeazaPasare( x, y, width, height, gravitatia){
+ 	var imagine = document.getElementById("twitter");
+ 	
+ 	this.x = x;
+ 	this.y = y;
+ 	this.width = width;
+ 	this.height = height;
+ 	this.gravitatia = gravitatia;
+ 	this.update = function(){
+ 		this.context = joc.context;
+ 		this.context.drawImage(imagine, this.x, this.y);
+ 	}
+ }
  var creazaJoc = function (){
  	joc.creazaJoc();
  	joc.updateBackround();
-
+ 	var pasare = new creeazaPasare( 10, 120, 30, 30, 0.05);
+ 	pasare.update();
  }
 
