@@ -157,7 +157,7 @@ function generareNumarRandom(min, max) {
  var creazaJoc = function (){
  	joc.creazaJoc();
  	pasare = new creeazaPasare( 10, 120, 30, 30, 0.05);
- 	scor = new deseneazaScor(joc.canvas.width - 200, 60, "30px" , 'fontArcade', '#ffffff');
+ 	scor = new deseneazaScor(joc.canvas.width - 230, 60, "30px" , 'fontArcade', '#ffffff');
  	}
  function accelereaza(n) {
     	pasare.gravitatia = n;
