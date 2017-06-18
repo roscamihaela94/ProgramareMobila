@@ -147,6 +147,16 @@ creazaJoc: function() {
 
  	}
  	scor.update();
+
+ 	if (frame % 1000 == 0) {
+        numarDeFrameuriLaCareSeCreeazaUnNouObstacol = numarDeFrameuriLaCareSeCreeazaUnNouObstacol - 20;
+    } else if (frame % 2000 == 0) {
+        numarDeFrameuriLaCareSeCreeazaUnNouObstacol = numarDeFrameuriLaCareSeCreeazaUnNouObstacol - 40;
+    } else if (frame % 3000 == 0) {
+        numarDeFrameuriLaCareSeCreeazaUnNouObstacol = numarDeFrameuriLaCareSeCreeazaUnNouObstacol - 50;
+    } else if (frame % 4000 == 0) {
+        numarDeFrameuriLaCareSeCreeazaUnNouObstacol = numarDeFrameuriLaCareSeCreeazaUnNouObstacol - 60;
+    }
  	
  }
  //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random - Genereaza un numar random intre doua valori min si max
