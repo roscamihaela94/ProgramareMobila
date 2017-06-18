@@ -17,6 +17,17 @@ canvas {
     
 
 }
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+}
 @font-face {
     font-family: fontArcade;
     src: url(fonturi/ARCADECLASSIC.TTF);
@@ -29,6 +40,7 @@ canvas {
 	<img src="imagini/background_.jpg" style="display: none" id="background">
 	<img src="imagini/twitter.png" style="display: none" id="twitter"/> 
 	<img src="imagini/facebook.png" style="display: none" id="facebook"/> 
-	<button onmousedown="restart()" style="display: none" id="restartButton">Restart</button>
+	<button class="button" onmousedown="restart()" style="display: none" id="restartButton">Restart</button>
+
 </body>
 </html>
