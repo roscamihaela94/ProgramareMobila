@@ -40,23 +40,32 @@ creazaJoc: function() {
 
  	this.pozitieNoua = function(){
 		this.gravitatiaActuala += this.gravitatia;
-		this.y += this.gravitatiaActuala;
+		this.y = this.y + this.gravitatiaActuala;
 		this.atingeJos();
 		this.atingeSus();
+		console.log(this.gravitatiaActuala);
  	}
  	 this.atingeJos = function() {
         var jos = joc.canvas.height - this.height; // 270 - 30 = 240
         if (this.y > jos) {
             this.y = jos;
-            this.gravitatiaActualaAObiectului = 0;
+            this.gravitatiaActuala = 0;
         }
     }
 
     this.atingeSus = function() {
         if (this.y < 0) {
             this.y = 0;
-            this.gravitatiaActualaAObiectului = 0;
+            this.gravitatiaActuala = 0;
         }
+    }
+     this.atingeObstacol = function(obstacol) {
+        //https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+        //Aici am facut detectia coliziuni dintre obstacol si obiect
+        if (this.x < obstacol.x + obstacol.width && this.x + this.width > obstacol.x && this.y < obstacol.y + obstacol.height && this.height + this.y > obstacol.y) {
+            return true;
+        }
+        return false;
     }
  }
 
@@ -102,6 +111,12 @@ creazaJoc: function() {
  }
 
  function updateJoc(){
+
+ 	for (i = 0; i < arrayObstacole.length; i += 1) {
+ 		if(pasare.atingeObstacol(arrayObstacole[i])){
+ 			return;
+ 		}
+ 	}
 	joc.stergeCanvas();
 	joc.updateBackround();
 	pasare.pozitieNoua();
@@ -133,7 +148,7 @@ creazaJoc: function() {
  	scor = new deseneazaScor(joc.canvas.width - 200, 60, "30px" , 'fontArcade', '#ffffff');
  	}
  function accelereaza(n) {
-    pasare.gravitatia = n;
+    	pasare.gravitatia = n;
 }	
 window.addEventListener("touchstart", on_touch_start);
 window.addEventListener("touchend", on_touch_end);
