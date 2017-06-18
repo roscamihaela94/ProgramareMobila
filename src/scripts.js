@@ -43,7 +43,7 @@ creazaJoc: function() {
 		this.y = this.y + this.gravitatiaActuala;
 		this.atingeJos();
 		this.atingeSus();
-		console.log(this.gravitatiaActuala);
+		
  	}
  	 this.atingeJos = function() {
         var jos = joc.canvas.height - this.height; // 270 - 30 = 240
@@ -127,8 +127,8 @@ creazaJoc: function() {
  	frame += 1;
 
  	if(frame % numarDeFrameuriLaCareSeCreeazaUnNouObstacol == 0 ){
-    	 obstacol1 = new creeazaObstacol( 200, 0, 30, 80, "#1d3469", "sus");
- 		 obstacol2 = new creeazaObstacol( 200, 200, 30, 70, "#1d3469", "jos");
+    	 obstacol1 = new creeazaObstacol( joc.canvas.width, 0, 30, 80, "#1d3469", "sus");
+ 		 obstacol2 = new creeazaObstacol( joc.canvas.width, 200, 30, 70, "#1d3469", "jos");
 		 	arrayObstacole.push(obstacol1);
 		 	arrayObstacole.push(obstacol2);
  		 	
