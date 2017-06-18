@@ -3,6 +3,7 @@ var pasare;
 var arrayObstacole =[];
 var numarDeFrameuriLaCareSeCreeazaUnNouObstacol = 200;
 var scor;
+var gameOver;
 
 var joc = {
 	canvas:document.createElement("canvas"),
@@ -115,6 +116,7 @@ creazaJoc: function() {
  		if(pasare.atingeObstacol(arrayObstacole[i])){
  			vibreaza();
  			clearInterval(joc.intervalId);
+ 			gameOver.update();
  			document.getElementById("restartButton").style.display = "block";
  			return;
  		}
@@ -124,6 +126,7 @@ creazaJoc: function() {
 	pasare.pozitieNoua();
 	pasare.update();
 	scor.scor = "Scor: " + frame;
+
 
 	
  	frame += 1;
@@ -159,6 +162,20 @@ creazaJoc: function() {
     }
  	
  }
+ function gameOverFunctie() {
+    this.text = 'GAME OVER';
+    this.x = joc.canvas.width / 2 - 50;
+    this.y = joc.canvas.height /2 ;
+    this.culoare = 'red';
+    this.context = joc.context;
+    this.context.font = "35px  fontArcade";
+
+    this.update = function() {
+        this.context.fillStyle = this.culoare;
+        this.context.fillText(this.text, this.x, this.y);
+    }
+
+ }
  //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random - Genereaza un numar random intre doua valori min si max
 //functia Math.random genereaza numere rendom intre 0 si 1
 function generareNumarRandom(min, max) {
@@ -169,6 +186,7 @@ function generareNumarRandom(min, max) {
  	joc.creazaJoc();
  	pasare = new creeazaPasare( 10, 120, 30, 30, 0.05);
  	scor = new deseneazaScor(joc.canvas.width - 230, 60, "30px" , 'fontArcade', '#ffffff');
+ 	gameOver = new gameOverFunctie();
  	}
  function accelereaza(n) {
     	pasare.gravitatia = n;
@@ -190,7 +208,10 @@ function restart(){
   	delete joc;
     delete pasare;
     delete scor;
+    delete gameOver;
+
    frame = 0;
+   numarDeFrameuriLaCareSeCreeazaUnNouObstacol = 200;
     arrayObstacole  = [];
     creazaJoc();
 
