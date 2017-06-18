@@ -2,6 +2,8 @@ var frame = 0;
 var pasare;
 var arrayObstacole =[];
 var numarDeFrameuriLaCareSeCreeazaUnNouObstacol = 200;
+var scor;
+
 
 var joc = {
 	canvas:document.createElement("canvas"),
@@ -60,19 +62,37 @@ creazaJoc: function() {
         }
 	 }	 
  }
+ function deseneazaScor(x, y,dimensiuneFont, fontFalily, culoare) {
+    this.scor = 0;
+    this.x = x;
+    this.y = y;
+    this.culoare = culoare;
+    this.context = joc.context;
+    this.context.font = dimensiuneFont + " " + fontFalily;
+    this.context.fillStyle = culoare;
+    this.context.fillText("", this.x, this.y);
 
+    this.update = function() {
+        this.context.fillStyle = this.culoare;
+        this.context.fillText(this.scor, this.x, this.y);
+    }
+
+ }
 
  function updateJoc(){
 	joc.stergeCanvas();
 	joc.updateBackround();
 	pasare.update();
+	scor.scor = "Scor: " + frame;
+
+	scor.update();
  	frame += 1;
 
  	if(frame % numarDeFrameuriLaCareSeCreeazaUnNouObstacol == 0 ){
     	 obstacol1 = new creeazaObstacol( 200, 0, 30, 80, "#1d3469", "sus");
  		 obstacol2 = new creeazaObstacol( 200, 200, 30, 70, "#1d3469", "jos");
- 		 	arrayObstacole.push(obstacol1);
- 		 	arrayObstacole.push(obstacol2);
+		 	arrayObstacole.push(obstacol1);
+		 	arrayObstacole.push(obstacol2);
  		 	
  	} 
 
@@ -86,9 +106,8 @@ creazaJoc: function() {
  
  var creazaJoc = function (){
  	joc.creazaJoc();
- 	joc.updateBackround();
  	pasare = new creeazaPasare( 10, 120, 30, 30, 0.05);
- 	pasare.update();
+ 	scor = new deseneazaScor(joc.canvas.width - 200, 60, "30px" , 'fontArcade', '#ffffff');
  	}
  	
 
