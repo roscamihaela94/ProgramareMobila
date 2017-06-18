@@ -7,9 +7,15 @@
 	<title>Proiect Programare Mobile</title>
 	<link rel="stylesheet" href="">
 	<style>
+body{
+	padding: 0px;
+    margin: 0px;
+}	
 canvas {
     border:1px solid #d3d3d3;
     background-color: #f1f1f1;
+    
+
 }
 @font-face {
     font-family: fontArcade;
@@ -23,5 +29,6 @@ canvas {
 	<img src="imagini/background_.jpg" style="display: none" id="background">
 	<img src="imagini/twitter.png" style="display: none" id="twitter"/> 
 	<img src="imagini/facebook.png" style="display: none" id="facebook"/> 
+	<button onmousedown="restart()" style="display: none" id="restartButton">Restart</button>
 </body>
 </html>

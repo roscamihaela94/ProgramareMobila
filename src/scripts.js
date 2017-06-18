@@ -115,6 +115,7 @@ creazaJoc: function() {
  		if(pasare.atingeObstacol(arrayObstacole[i])){
  			vibreaza();
  			clearInterval(joc.intervalId);
+ 			document.getElementById("restartButton").style.display = "block";
  			return;
  		}
  	}
@@ -174,4 +175,14 @@ function on_touch_end(event) {
 }
 function vibreaza() {
     window.navigator.vibrate(100);
+}
+function restart(){
+  	delete joc;
+    delete pasare;
+    delete scor;
+   frame = 0;
+    arrayObstacole  = [];
+    creazaJoc();
+
+    document.getElementById("restartButton").style.display = "none";
 }
