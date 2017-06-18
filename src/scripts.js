@@ -1,7 +1,7 @@
 var frame = 0;
-var obstacol1;
-var obstacol2;
 var pasare;
+var arrayObstacole =[];
+var numarDeFrameuriLaCareSeCreeazaUnNouObstacol = 200;
 
 var joc = {
 	canvas:document.createElement("canvas"),
@@ -11,7 +11,7 @@ creazaJoc: function() {
  		this.canvas.height = 270;
  		this.context = this.canvas.getContext("2d");
  		document.body.insertBefore(this.canvas, document.body.childNodes[0]);
- 		intervalId = setInterval(updateJoc, 500);
+ 		intervalId = setInterval(updateJoc, 10);
 
  	},
  	stergeCanvas: function(){
@@ -63,19 +63,24 @@ creazaJoc: function() {
 
 
  function updateJoc(){
- 	if ("undefined" === typeof obstacol1) { 
-    	 obstacol1 = new creeazaObstacol( 200, 0, 30, 80, "#1d3469", "sus");
- 		obstacol2 = new creeazaObstacol( 200, 200, 30, 70, "#1d3469", "jos");
-	}
-
 	joc.stergeCanvas();
 	joc.updateBackround();
 	pasare.update();
-	obstacol1.update();
- 	obstacol2.update();
- 	obstacol1.x += -1;
- 	obstacol2.x += -1;
- 	
+ 	frame += 1;
+
+ 	if(frame % numarDeFrameuriLaCareSeCreeazaUnNouObstacol == 0 ){
+    	 obstacol1 = new creeazaObstacol( 200, 0, 30, 80, "#1d3469", "sus");
+ 		 obstacol2 = new creeazaObstacol( 200, 200, 30, 70, "#1d3469", "jos");
+ 		 	arrayObstacole.push(obstacol1);
+ 		 	arrayObstacole.push(obstacol2);
+ 		 	
+ 	} 
+
+ 	for (var i =0; i < arrayObstacole.length; i++ ){
+ 		arrayObstacole[i].x += -1; //mutam obstacolele la stanga cu 1
+        arrayObstacole[i].update();
+
+ 	}
  	
  }
  
