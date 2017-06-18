@@ -4,7 +4,6 @@ var arrayObstacole =[];
 var numarDeFrameuriLaCareSeCreeazaUnNouObstacol = 200;
 var scor;
 
-
 var joc = {
 	canvas:document.createElement("canvas"),
 	background: document.getElementById("background"),
@@ -13,7 +12,7 @@ creazaJoc: function() {
  		this.canvas.height = 270;
  		this.context = this.canvas.getContext("2d");
  		document.body.insertBefore(this.canvas, document.body.childNodes[0]);
- 		intervalId = setInterval(updateJoc, 10);
+ 		this.intervalId = setInterval(updateJoc, 10);
 
  	},
  	stergeCanvas: function(){
@@ -114,6 +113,8 @@ creazaJoc: function() {
 
  	for (i = 0; i < arrayObstacole.length; i += 1) {
  		if(pasare.atingeObstacol(arrayObstacole[i])){
+ 			vibreaza();
+ 			clearInterval(joc.intervalId);
  			return;
  		}
  	}
@@ -123,14 +124,18 @@ creazaJoc: function() {
 	pasare.update();
 	scor.scor = "Scor: " + frame;
 
-	scor.update();
+	
  	frame += 1;
 
  	if(frame % numarDeFrameuriLaCareSeCreeazaUnNouObstacol == 0 ){
-    	 obstacol1 = new creeazaObstacol( joc.canvas.width, 0, 30, 80, "#1d3469", "sus");
- 		 obstacol2 = new creeazaObstacol( joc.canvas.width, 200, 30, 70, "#1d3469", "jos");
-		 	arrayObstacole.push(obstacol1);
-		 	arrayObstacole.push(obstacol2);
+    	  lungimeCanvas = joc.canvas.width;
+        inaltimeCanvas = joc.canvas.height;
+
+        height = generareNumarRandom(20, 200);
+        gaura = generareNumarRandom(100, 200);
+
+        arrayObstacole.push(new creeazaObstacol(lungimeCanvas, 0, 30, height, "#1d3469", "sus"));
+        arrayObstacole.push(new creeazaObstacol(lungimeCanvas, height + gaura, 30, inaltimeCanvas - height - gaura, "#1d3469", "jos"));
  		 	
  	} 
 
@@ -138,9 +143,16 @@ creazaJoc: function() {
  		arrayObstacole[i].x += -1; //mutam obstacolele la stanga cu 1
         arrayObstacole[i].update();
 
+
  	}
+ 	scor.update();
  	
  }
+ //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random - Genereaza un numar random intre doua valori min si max
+//functia Math.random genereaza numere rendom intre 0 si 1
+function generareNumarRandom(min, max) {
+    return Math.random() * (max - min) + min;
+}
  
  var creazaJoc = function (){
  	joc.creazaJoc();
@@ -159,4 +171,7 @@ function on_touch_start(event) {
 
 function on_touch_end(event) {
     accelereaza(0.05);
+}
+function vibreaza() {
+    window.navigator.vibrate(100);
 }
