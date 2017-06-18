@@ -132,5 +132,16 @@ creazaJoc: function() {
  	pasare = new creeazaPasare( 10, 120, 30, 30, 0.05);
  	scor = new deseneazaScor(joc.canvas.width - 200, 60, "30px" , 'fontArcade', '#ffffff');
  	}
- 	
+ function accelereaza(n) {
+    pasare.gravitatia = n;
+}	
+window.addEventListener("touchstart", on_touch_start);
+window.addEventListener("touchend", on_touch_end);
 
+function on_touch_start(event) {
+    accelereaza(-0.3);
+}
+
+function on_touch_end(event) {
+    accelereaza(0.05);
+}
