@@ -40,12 +40,18 @@ creazaJoc: function() {
 	this.height = height;
 	this.culoare = culoare;
 	this.locatieObstacol = locatieObstacol;
-
+	this.context = joc.context;
 	 this.update = function(){
-	 	this.context = joc.context;
+	 	
 	 	this.context.fillStyle = this.culoare;
 	 	this.context.fillRect( this.x, this.y, this.width, this.height);
 	
+
+	if (this.locatieObstacol == "sus") {
+            this.context.drawImage(imagine, this.x, this.height - 30);
+        } else if (this.locatieObstacol == "jos") {
+             this.context.drawImage(imagine, this.x, this.y);
+        }
 	 }	 
  }
  var creazaJoc = function (){
