@@ -39,10 +39,25 @@ creazaJoc: function() {
  	}
 
  	this.pozitieNoua = function(){
-	this.gravitatiaActuala += this.gravitatia;
-	this.y += this.gravitatiaActuala;
-	
+		this.gravitatiaActuala += this.gravitatia;
+		this.y += this.gravitatiaActuala;
+		this.atingeJos();
+		this.atingeSus();
  	}
+ 	 this.atingeJos = function() {
+        var jos = joc.canvas.height - this.height; // 270 - 30 = 240
+        if (this.y > jos) {
+            this.y = jos;
+            this.gravitatiaActualaAObiectului = 0;
+        }
+    }
+
+    this.atingeSus = function() {
+        if (this.y < 0) {
+            this.y = 0;
+            this.gravitatiaActualaAObiectului = 0;
+        }
+    }
  }
 
 
