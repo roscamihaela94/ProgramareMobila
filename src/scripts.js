@@ -27,17 +27,24 @@ creazaJoc: function() {
  }
  function creeazaPasare( x, y, width, height, gravitatia){
  	var imagine = document.getElementById("twitter");
- 	
+ 	this.context = joc.context;
  	this.x = x;
  	this.y = y;
  	this.width = width;
  	this.height = height;
  	this.gravitatia = gravitatia;
+ 	this.gravitatiaActuala = 0;
  	this.update = function(){
- 		this.context = joc.context;
  		this.context.drawImage(imagine, this.x, this.y);
  	}
+
+ 	this.pozitieNoua = function(){
+	this.gravitatiaActuala += this.gravitatia;
+	this.y += this.gravitatiaActuala;
+	
+ 	}
  }
+
 
  function creeazaObstacol(x, y, width, height, culoare, locatieObstacol) {
  	 var imagine = document.getElementById("facebook");
@@ -82,6 +89,7 @@ creazaJoc: function() {
  function updateJoc(){
 	joc.stergeCanvas();
 	joc.updateBackround();
+	pasare.pozitieNoua();
 	pasare.update();
 	scor.scor = "Scor: " + frame;
 
