@@ -32,4 +32,17 @@ setInterval(updateJoc, 10)
 |**window.addEventListener**("touchstart", on_touch_start)| Ataseaza la evenimentul de **touchstart** functia **on_touch_start**  |[window.addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) |
 |**window.addEventListener**("touchend", on_touch_end)| La fel ca mai sus doar ca pentru evenimentul de touchend | [window.addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) | 
 
-**Pentru editarea acestui fisier am folosit [dillinger.io](http://dillinger.io/)**
+## Variabie folosite 
+
+| Numele variabilei| Descriere |
+| ------ | ------ | 
+|**frame**| Aici este memorat numarul de frame-uri|
+|**pasare**|In aceasta variabila am salvat obiectul pasare|
+|**arrayObstacole**|Pentru a memora obstacole am folosit variabila **arrayObstacole**|
+|**numarDeFrameuriLaCareSeCreeazaUnNouObstacol**|Dupa cum sugereaza numele acestei variable.Acesta variabila defineste numarul de frameuri la care se creeaza un nou obstacol|
+|**scor**|In aceasta variabila se memorez obiectul scor care este creat cu ajutorul functiei **deseneazaScor**|
+|**gameOver**|Variabila GameOver salveaza obictul generat de functia gameOverFunctie|
+|**joc**|Aceasta variabila memoreaza obiectul Joc.Unde sunt salvate functiile de creare, stergere sau update a canvasului|
+
+**Pentru editarea acestui fisier am folosit [dilli
+nger.io](http://dillinger.io/)**
